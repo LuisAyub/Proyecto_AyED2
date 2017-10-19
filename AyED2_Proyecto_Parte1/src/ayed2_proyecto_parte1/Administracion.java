@@ -65,16 +65,28 @@ public class Administracion {
         }
         imprimirCaminos(caminosTotal);
     }
-    
-//    public void imprimirAerolineas(){
-//        for (Aerolinea a: aerolineas){
-//            System.out.println(a.getNombre());
-//        }
-//    }
 
     private void imprimirCaminos(TCaminos caminosTotal) {
+        double min = 0;
+        TCamino aux = null;
+        boolean primer = true;
         for (TCamino c: caminosTotal.getCaminos()){
-            c.imprimirEtiquetasConsola();
+            if (primer){
+                min = c.getCostoTotal();
+                aux = c;
+                primer = false;
+                c.imprimirEtiquetasConsola();
+            }
+            else{
+                c.imprimirEtiquetasConsola();
+                if (min > c.getCostoTotal()){
+                    min = c.getCostoTotal();
+                    aux = c;
+                }                
+            }
+        }
+        if (aux != null){
+            System.out.println("El camino con menor costo es: "+ aux.imprimirEtiquetas());
         }
     }
 }

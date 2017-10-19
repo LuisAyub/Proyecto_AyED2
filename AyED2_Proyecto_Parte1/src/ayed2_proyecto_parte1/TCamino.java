@@ -26,10 +26,11 @@ public class TCamino {
     public String imprimirEtiquetas() {
         StringBuilder sb = new StringBuilder();
         sb.append("Aerolinea: " + getAerolinea());
-        sb.append(" // Origen: " + getOrigen().getEtiqueta());
+        sb.append(" // " + getOrigen().getEtiqueta());
         for (Comparable adyacente : getOtrosVertices()) {
             sb.append(" -> " + adyacente);
         }
+        sb.append(" // Costo: " + costoTotal);
         return sb.toString();
     }
 
