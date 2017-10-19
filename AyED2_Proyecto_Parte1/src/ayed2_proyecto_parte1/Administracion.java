@@ -58,12 +58,22 @@ public class Administracion {
     }
     
     public void obtenerCaminos(Comparable origen, Comparable destino){
-        TCaminos caminosTotal = new TCaminos();
-        for (Aerolinea a: aerolineas.values()){
-            TCaminos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
-            caminosTotal.getCaminos().addAll(caminos.getCaminos());
+        if (!origen.equals("") && !destino.equals("")){
+            TCaminos caminosTotal = new TCaminos();
+            for (Aerolinea a: aerolineas.values()){
+                TCaminos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
+                caminosTotal.getCaminos().addAll(caminos.getCaminos());
+            }
+            if (caminosTotal.getCaminos().size() > 0){
+                imprimirCaminos(caminosTotal);
+            }
+            else{
+                System.out.println("No hay vuelos disponibles entre " + origen + " y " + destino + ".");
+            }
         }
-        imprimirCaminos(caminosTotal);
+        else{
+            System.out.println("Uno de los atributos se encuentra vacio.");
+        }
     }
 
     private void imprimirCaminos(TCaminos caminosTotal) {
@@ -86,7 +96,7 @@ public class Administracion {
             }
         }
         if (aux != null){
-            System.out.println("El camino con menor costo es: "+ aux.imprimirEtiquetas());
+            System.out.println("El vuelo de menor costo es: "+ aux.imprimirEtiquetas());
         }
     }
 }

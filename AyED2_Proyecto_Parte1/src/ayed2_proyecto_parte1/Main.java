@@ -27,9 +27,11 @@ public class Main {
         alasUcu.cargarGrafos();
         alasUcu.obtenerCaminos("JFK", "LAX");
         System.out.println(" ------------------ ");
-        alasUcu.obtenerCaminos("MIA", "JFK");
+        alasUcu.obtenerCaminos("MIA", "");
         System.out.println(" ------------------ ");
-        alasUcu.obtenerCaminos("LAX", "MIA");
+        alasUcu.obtenerCaminos("", "MIA");
+        System.out.println(" ------------------ ");
+        alasUcu.obtenerCaminos("06N", "MIA");
     }
     
 }
