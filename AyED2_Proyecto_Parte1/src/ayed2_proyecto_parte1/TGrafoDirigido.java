@@ -203,11 +203,12 @@ public class TGrafoDirigido implements IGrafoDirigido {
      * @return Un array con las claves de los vertices que componen el mejor
      * camino, en caso de que exista
      */
-    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino) {
+    @Override
+    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea) {
         TCaminos todosLosCaminos = new TCaminos();
         TVertice v = buscarVertice(etiquetaOrigen);
         if (v != null) {
-            TCamino caminoPrevio = new TCamino(v);
+            TCamino caminoPrevio = new TCamino(v,aerolinea);
             v.todosLosCaminos(etiquetaDestino, caminoPrevio, todosLosCaminos);
             return todosLosCaminos;
         }

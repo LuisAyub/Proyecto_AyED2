@@ -60,7 +60,7 @@ public class Administracion {
     public void obtenerCaminos(Comparable origen, Comparable destino){
         TCaminos caminosTotal = new TCaminos();
         for (Aerolinea a: aerolineas.values()){
-            TCaminos caminos = a.getGrafo().todosLosCaminos(origen, destino);
+            TCaminos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
             caminosTotal.getCaminos().addAll(caminos.getCaminos());
         }
         imprimirCaminos(caminosTotal);

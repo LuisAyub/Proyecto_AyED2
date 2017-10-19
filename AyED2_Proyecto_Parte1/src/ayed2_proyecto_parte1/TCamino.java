@@ -12,6 +12,7 @@ import java.util.LinkedList;
 public class TCamino {
 
     private final TVertice origen;
+    private String aerolinea;
     private Collection<Comparable> otrosVertices;
 // es una lista de etiquetas de los vertices
 // ATENCIÓN: PONER LA CLASE CONCRETA QUE									     	     
@@ -24,19 +25,25 @@ public class TCamino {
 
     public String imprimirEtiquetas() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Origen: " + getOrigen().getEtiqueta());
+        sb.append("Aerolinea: " + getAerolinea());
+        sb.append(" // Origen: " + getOrigen().getEtiqueta());
         for (Comparable adyacente : getOtrosVertices()) {
             sb.append(" -> " + adyacente);
         }
         return sb.toString();
     }
 
+    public TCamino(TVertice v, String aerolinea) {
+        this.origen = v;
+        this.aerolinea = aerolinea;
+        this.otrosVertices = new LinkedList();
+    }
+
     public TCamino(TVertice v) {
         this.origen = v;
         this.otrosVertices = new LinkedList();
-
     }
-
+    
     public boolean agregarAdyacencia(TAdyacencia adyacenciaActual) {
         if (adyacenciaActual.getDestino() != null) {
             setCostoTotal((Double) getCostoTotal() + ((Number) adyacenciaActual.getCosto()).doubleValue());
@@ -75,7 +82,7 @@ public class TCamino {
 
     public TCamino copiar() {
         TVertice origen = new TVertice(this.getOrigen().getEtiqueta());
-        TCamino copia = new TCamino(origen);
+        TCamino copia = new TCamino(origen, this.getAerolinea());
         origen.getAdyacentes().addAll(this.getOrigen().getAdyacentes());
         copia.getOtrosVertices().addAll(this.getOtrosVertices());
 
@@ -99,6 +106,13 @@ public class TCamino {
             }
         }
         return sb.toString();
+    }
+
+    /**
+     * @return the aerolinea
+     */
+    public String getAerolinea() {
+        return aerolinea;
     }
 
 }
