@@ -26,6 +26,10 @@ public class Main {
         alasUcu.cargarVuelos("./src/ayed2_proyecto_parte1/vuelos_test.csv");
         alasUcu.cargarGrafos();
         alasUcu.obtenerCaminos("JFK", "LAX");
+        System.out.println(" ------------------ ");
+        alasUcu.obtenerCaminos("MIA", "JFK");
+        System.out.println(" ------------------ ");
+        alasUcu.obtenerCaminos("LAX", "MIA");
     }
     
 }
