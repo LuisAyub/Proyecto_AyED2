@@ -77,26 +77,11 @@ public class Administracion {
     }
 
     private void imprimirCaminos(TCaminos caminosTotal) {
-        double min = 0;
-        TCamino aux = null;
-        boolean primer = true;
         for (TCamino c: caminosTotal.getCaminos()){
-            if (primer){
-                min = c.getCostoTotal();
-                aux = c;
-                primer = false;
-                c.imprimirEtiquetasConsola();
-            }
-            else{
-                c.imprimirEtiquetasConsola();
-                if (min > c.getCostoTotal()){
-                    min = c.getCostoTotal();
-                    aux = c;
-                }                
-            }
+            c.imprimirEtiquetasConsola();
         }
-        if (aux != null){
-            System.out.println("El vuelo de menor costo es: "+ aux.imprimirEtiquetas());
-        }
+        System.out.println(" ------------------------ ");
+        System.out.println("El vuelo de menor costo es: ");
+        caminosTotal.obtenerMenor().imprimirEtiquetasConsola();
     }
 }

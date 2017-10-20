@@ -32,6 +32,21 @@ public class TCaminos {
         System.out.println(imprimirCaminos());
     }
 
+    public TCamino obtenerMenor(){
+        TCamino aux = caminos.iterator().next();
+        double min = aux.getCostoTotal();
+        for (TCamino c: caminos){
+            if (min > c.getCostoTotal()){
+                min = c.getCostoTotal();
+                aux = c;
+            }     
+        }
+        if (aux != null){
+            return aux;
+        }
+        return null;
+    }
+    
     public Collection<TCamino> getCaminos() {
         return caminos;
     }
