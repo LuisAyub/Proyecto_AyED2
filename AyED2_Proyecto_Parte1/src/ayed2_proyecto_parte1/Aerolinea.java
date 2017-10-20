@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * @author Luis Ayub
  */
 
-class Aerolinea {
+public class Aerolinea {
     private Collection<TArista> vuelos;
     private IGrafoDirigido grafo;
     private Comparable etiqueta;

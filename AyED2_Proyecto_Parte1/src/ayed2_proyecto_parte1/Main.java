@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ayed2_proyecto_parte1;
 
 /**
- *
- * @author Luigi PC
+ * Clase que se encarga de iniciar el programa, y de cargar las estructuras de
+ * datos.
+ * @author Luis Ayub
  */
 public class Main {
 
