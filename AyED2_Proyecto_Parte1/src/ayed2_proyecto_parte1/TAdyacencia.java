@@ -1,8 +1,8 @@
 package ayed2_proyecto_parte1;
 
 /**
- *
- * @author Luigi PC
+ * Clase que contiene los datos de una Adyacencia.
+ * @author Luis Ayub
  */
 public class TAdyacencia implements IAdyacencia {
    
@@ -12,17 +12,17 @@ public class TAdyacencia implements IAdyacencia {
     private TVertice destino;
     
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable etiqueta.
+     * @return Retorna la etiqueta.
      */
     @Override
     public Comparable getEtiqueta() {
         return etiqueta;
     }
  
-    /**
-     *
-     * @return
+     /**
+     * Metodo que se encargar de retornar la variable costo.
+     * @return Retorna el costo.
      */
     @Override
     public double getCosto() {
@@ -30,8 +30,8 @@ public class TAdyacencia implements IAdyacencia {
     }
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable destino.
+     * @return Retorna el destino.
      */
     @Override
     public TVertice getDestino() {
@@ -39,9 +39,10 @@ public class TAdyacencia implements IAdyacencia {
     }
 
     /**
-     *
-     * @param costo
-     * @param destino
+     * Constructor de la clase, se encarga de asignarle valores a las variables
+     * de clase.
+     * @param costo Valor del costo.
+     * @param destino Vertice destino.
      */
     public TAdyacencia(double costo, TVertice destino) {
         this.etiqueta = destino.getEtiqueta();

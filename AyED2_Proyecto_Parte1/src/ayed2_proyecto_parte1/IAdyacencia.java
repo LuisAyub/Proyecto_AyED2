@@ -1,25 +1,25 @@
 package ayed2_proyecto_parte1;
 /**
- *
- * @author Ernesto
+ * Interfaz que contiene todos los metodos de la clase Adyacencia.
+ * @author Luis Ayub
  */
 public interface IAdyacencia {
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable costo.
+     * @return Retorna el costo.
      */
     double getCosto();
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable destino.
+     * @return Retorna el destino.
      */
     TVertice getDestino();
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable etiqueta.
+     * @return Retorna la etiqueta.
      */
     Comparable getEtiqueta();
     

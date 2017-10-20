@@ -156,22 +156,6 @@ public class TVertice implements IVertice{
 
     /**
      *
-     * @param visitados
-     */
-    @Override
-    public void bpf(Collection<Comparable> visitados) {
-        setVisitado(true);
-        visitados.add(this.getEtiqueta());
-        for (TAdyacencia adyacente : adyacentes) {
-            TVertice vertAdy = adyacente.getDestino();
-            if (!vertAdy.getVisitado()) {
-                vertAdy.bpf(visitados);
-            }
-        }
-    }
-
-    /**
-     *
      * @param etVertDest
      * @param caminoPrevio
      * @param todosLosCaminos
@@ -196,30 +180,6 @@ public class TVertice implements IVertice{
         this.setVisitado(false);
         return todosLosCaminos;
     }    
-
-    /**
-     *
-     * @param camino
-     * @return
-     */
-    @Override
-    public boolean tieneCiclo(TVuelo camino) {
-        this.visitado = true;
-        boolean flag = false;
-        camino.getOtrosVertices().add(this.etiqueta);
-        for (TAdyacencia a : this.adyacentes){
-            if (!a.getDestino().visitado){
-                flag = a.getDestino().tieneCiclo(camino);
-            }
-            else{
-                if (camino.getOtrosVertices().contains(a.getDestino().etiqueta)){
-                    return true;
-                }
-            }
-        }
-        camino.getOtrosVertices().remove(this.etiqueta);
-        return flag;
-    }
 
     /**
      *

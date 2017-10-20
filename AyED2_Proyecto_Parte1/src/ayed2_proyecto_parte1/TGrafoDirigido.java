@@ -175,57 +175,6 @@ public class TGrafoDirigido implements IGrafoDirigido {
     public Map<Comparable, TVertice> getVertices() {
         return vertices;
     }
-
-    /**
-     *
-     * @param vertice
-     * @return
-     */
-    @Override
-    public Collection<Comparable> bpf(TVertice vertice) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param etiquetaOrigen
-     * @return
-     */
-    @Override
-
-    public Collection<Comparable> bpf(Comparable etiquetaOrigen) {
-        Collection<Comparable> listaBpf = new LinkedList<Comparable>();
-        TVertice origen = vertices.get(etiquetaOrigen);
-        if (origen != null) {
-            origen.bpf(listaBpf);
-        }
-        return listaBpf;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    /**
-     * BPF del grafo, a partir del primer vértice, para todos los vertices
-     */
-
-    public Collection<Comparable> bpf() {
-        Collection<Comparable> listaBpf = new LinkedList<Comparable>();
-
-        if (vertices.isEmpty()) {
-            System.out.println("El grafo está vacio");
-        } else {
-            for (TVertice vertV : vertices.values()) {
-                if (!vertV.getVisitado()) {
-                    vertV.bpf(listaBpf);
-                }
-            }
-        }
-        return listaBpf;
-    }
-
     /**
      * @param etiquetaOrigen
      * @param etiquetaDestino
@@ -244,45 +193,4 @@ public class TGrafoDirigido implements IGrafoDirigido {
         }
         return null;
     }
-
-    /**
-     *
-     * @param camino
-     * @return
-     */
-    @Override
-    public boolean tieneCiclo(TVuelo camino) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @param etiquetaOrigen
-     * @return
-     */
-    @Override
-    public boolean tieneCiclo(Comparable etiquetaOrigen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public boolean tieneCiclo() {
-        boolean flag = false;
-        for (Comparable key : this.vertices.keySet()){
-            TVertice vertice = this.vertices.get(key);
-            if (!vertice.getVisitado()){
-                TVuelo camino = new TVuelo(vertice);
-                flag = vertice.tieneCiclo(camino);
-                if (flag){
-                    return flag;
-                }
-            }
-        }
-        return false;
-    }
-
 }

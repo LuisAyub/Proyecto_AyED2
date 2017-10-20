@@ -1,34 +1,13 @@
 package ayed2_proyecto_parte1;
-
-
 import java.util.Collection;
 import java.util.Map;
 
 /**
  *
- * @author Luigi PC
+ * @author Luis Ayub
  */
 public interface IGrafoDirigido {
 
-    /**
-     *
-     * @return
-     */
-    Collection<Comparable> bpf();
-
-    /**
-     *
-     * @param vertice
-     * @return
-     */
-    Collection<Comparable> bpf(TVertice vertice);
-
-    /**
-     *
-     * @param etiquetaOrigen
-     * @return
-     */
-    Collection<Comparable> bpf(Comparable etiquetaOrigen);
     /**
      * Metodo encargado de eliminar una arista dada por un origen y destino. En
      * caso de no existir la arista, retorna falso. En caso de que las etiquetas
@@ -94,15 +73,10 @@ public interface IGrafoDirigido {
     boolean insertarVertice(TVertice vertice);
 
     /**
-     *
-     * @return
+     * Metodo que se encarga de retornar la variable vertices.
+     * @return Retorna los vertices.
      */
     public Map<Comparable, TVertice> getVertices();
-
-    /**
-     *
-     */
-    public void desvisitarVertices();
 
     /**
      *
@@ -112,25 +86,4 @@ public interface IGrafoDirigido {
      * @return
      */
     public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea);
-
-    /**
-     *
-     * @param camino
-     * @return
-     */
-    public boolean tieneCiclo(TVuelo camino);
-
-    /**
-     *
-     * @param etiquetaOrigen
-     * @return
-     */
-    public boolean tieneCiclo(Comparable etiquetaOrigen);
-
-    /**
-     *
-     * @return
-     */
-    public boolean tieneCiclo();
-
 }

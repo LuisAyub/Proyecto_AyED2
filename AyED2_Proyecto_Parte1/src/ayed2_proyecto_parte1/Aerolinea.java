@@ -27,7 +27,7 @@ class Aerolinea {
     }
 
     /**
-     * Metodo de retorna la etiqueta de la aerolinea.
+     * Metodo de retorna la variable etiqueta.
      * @return retorna la etiqueta de la aerolinea.
      */
     public Comparable getEtiqueta() {
@@ -43,7 +43,7 @@ class Aerolinea {
     }
 
     /**
-     * Metodo de retorna la nombre de la aerolinea.
+     * Metodo de retorna la variable nombre.
      * @return retorna la nombre de la aerolinea.
      */
     public String getNombre() {
@@ -59,8 +59,8 @@ class Aerolinea {
     }
 
     /**
-     * Metodo de retorna la coleccion de vuelos (aristas) en la aerolinea.
-     * @return Retorna una collecion de aristas.
+     * Metodo de retorna la variable vuelos.
+     * @return Retorna una coleccion de aristas.
      */
     public Collection<TArista> getVuelos() {
         return vuelos;
@@ -75,7 +75,7 @@ class Aerolinea {
     }
 
     /**
-     * Metodo de retorna el grafo dirigido de la aerolinea.
+     * Metodo que retorna la variable grafo.
      * @return Retorna un grafo dirigido.
      */
     public IGrafoDirigido getGrafo() {

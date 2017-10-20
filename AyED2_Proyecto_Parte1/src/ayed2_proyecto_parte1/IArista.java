@@ -1,50 +1,45 @@
 package ayed2_proyecto_parte1;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
- *
- * @author Ernesto
+ * Interfaz que contiene todos los metodos de la clase TArista.
+ * @author Luis Ayub
  */
 public interface IArista {
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable costo.
+     * @return Retorna el costo.
      */
     double getCosto();
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable etiquetaDestino.
+     * @return Retorna la etiqueta.
      */
     Comparable getEtiquetaDestino();
 
     /**
-     *
-     * @return
+     * Metodo que se encargar de retornar la variable etiquetaOrigen.
+     * @return Retorna la etiqueta.
      */
     Comparable getEtiquetaOrigen();
 
     /**
-     *
-     * @param costo
+     * Metodo que se encarga de asignar un valor al costo.
+     * @param costo valor a asignar.
      */
     void setCosto(double costo);
 
     /**
-     *
-     * @param etiquetaDestino
+     * Metodo que se encarga de asignar un Cadena de caracteres a la 
+     * etiquetaDestino.
+     * @param etiquetaDestino Cadena de caracteres a asignar.
      */
     void setEtiquetaDestino(Comparable etiquetaDestino);
 
     /**
-     *
-     * @param etiquetaOrigen
+     * Metodo que se encarga de asignar un Cadena de caracteres a la 
+     * etiquetaOrigen.
+     * @param etiquetaOrigen Cadena de caracteres a asignar.
      */
     void setEtiquetaOrigen(Comparable etiquetaOrigen);
     
