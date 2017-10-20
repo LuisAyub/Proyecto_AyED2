@@ -109,13 +109,13 @@ public class TVertice implements IVertice{
         }
     }
 
-public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCaminos todosLosCaminos) {
+public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos) {
         this.setVisitado(true);
         for (TAdyacencia adyacencia : this.getAdyacentes()) {
             TVertice destino = adyacencia.getDestino();
             if (!destino.getVisitado()) {
                 if (destino.getEtiqueta().compareTo(etVertDest) == 0) {
-                    TCamino copia = caminoPrevio.copiar();
+                    TVuelo copia = caminoPrevio.copiar();
                     copia.agregarAdyacencia(adyacencia);
                     todosLosCaminos.getCaminos().add(copia);
                 } else {
@@ -130,7 +130,7 @@ public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCa
     }    
 
     @Override
-    public boolean tieneCiclo(TCamino camino) {
+    public boolean tieneCiclo(TVuelo camino) {
         this.visitado = true;
         boolean flag = false;
         camino.getOtrosVertices().add(this.etiqueta);

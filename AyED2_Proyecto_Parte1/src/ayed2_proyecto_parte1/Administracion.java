@@ -59,9 +59,9 @@ public class Administracion {
     
     public void obtenerCaminos(Comparable origen, Comparable destino){
         if (!origen.equals("") && !destino.equals("")){
-            TCaminos caminosTotal = new TCaminos();
+            TVuelos caminosTotal = new TVuelos();
             for (Aerolinea a: aerolineas.values()){
-                TCaminos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
+                TVuelos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
                 caminosTotal.getCaminos().addAll(caminos.getCaminos());
             }
             if (caminosTotal.getCaminos().size() > 0){
@@ -76,8 +76,8 @@ public class Administracion {
         }
     }
 
-    private void imprimirCaminos(TCaminos caminosTotal) {
-        for (TCamino c: caminosTotal.getCaminos()){
+    private void imprimirCaminos(TVuelos caminosTotal) {
+        for (TVuelo c: caminosTotal.getCaminos()){
             c.imprimirEtiquetasConsola();
         }
         System.out.println(" ------------------------ ");

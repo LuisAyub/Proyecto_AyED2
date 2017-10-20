@@ -204,11 +204,11 @@ public class TGrafoDirigido implements IGrafoDirigido {
      * camino, en caso de que exista
      */
     @Override
-    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea) {
-        TCaminos todosLosCaminos = new TCaminos();
+    public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea) {
+        TVuelos todosLosCaminos = new TVuelos();
         TVertice v = buscarVertice(etiquetaOrigen);
         if (v != null) {
-            TCamino caminoPrevio = new TCamino(v,aerolinea);
+            TVuelo caminoPrevio = new TVuelo(v,aerolinea);
             v.todosLosCaminos(etiquetaDestino, caminoPrevio, todosLosCaminos);
             return todosLosCaminos;
         }
@@ -218,7 +218,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
    
 
     @Override
-    public boolean tieneCiclo(TCamino camino) {
+    public boolean tieneCiclo(TVuelo camino) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -233,7 +233,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
         for (Comparable key : this.vertices.keySet()){
             TVertice vertice = this.vertices.get(key);
             if (!vertice.getVisitado()){
-                TCamino camino = new TCamino(vertice);
+                TVuelo camino = new TVuelo(vertice);
                 flag = vertice.tieneCiclo(camino);
                 if (flag){
                     return flag;

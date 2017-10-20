@@ -12,17 +12,17 @@ import java.util.LinkedList;
  *
  * @author diego
  */
-public class TCaminos {
+public class TVuelos {
     
-    private Collection<TCamino> caminos;
+    private Collection<TVuelo> caminos;
 
-    public TCaminos() {
+    public TVuelos() {
         this.caminos = new LinkedList<>();
     }
     
     public String imprimirCaminos(){
         StringBuilder sb = new StringBuilder();
-        for (TCamino camino : caminos){
+        for (TVuelo camino : caminos){
             sb.append(camino.imprimirEtiquetas()+"\n");
         }
         return sb.toString();
@@ -32,10 +32,10 @@ public class TCaminos {
         System.out.println(imprimirCaminos());
     }
 
-    public TCamino obtenerMenor(){
-        TCamino aux = caminos.iterator().next();
+    public TVuelo obtenerMenor(){
+        TVuelo aux = caminos.iterator().next();
         double min = aux.getCostoTotal();
-        for (TCamino c: caminos){
+        for (TVuelo c: caminos){
             if (min > c.getCostoTotal()){
                 min = c.getCostoTotal();
                 aux = c;
@@ -47,7 +47,7 @@ public class TCaminos {
         return null;
     }
     
-    public Collection<TCamino> getCaminos() {
+    public Collection<TVuelo> getCaminos() {
         return caminos;
     }
     

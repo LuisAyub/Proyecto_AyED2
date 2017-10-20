@@ -42,7 +42,7 @@ public interface IVertice {
 
    public void bpf(Collection<Comparable> visitados) ;
 
-   public TCaminos todosLosCaminos(Comparable etVertDest, TCamino caminoPrevio, TCaminos todosLosCaminos);
+   public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos);
    
-   public boolean tieneCiclo(TCamino camino);
+   public boolean tieneCiclo(TVuelo camino);
 }

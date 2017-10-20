@@ -71,9 +71,9 @@ public interface IGrafoDirigido {
 
     public void desvisitarVertices();
 
-    public TCaminos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea);
+    public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea);
 
-    public boolean tieneCiclo(TCamino camino);
+    public boolean tieneCiclo(TVuelo camino);
 
     public boolean tieneCiclo(Comparable etiquetaOrigen);
 

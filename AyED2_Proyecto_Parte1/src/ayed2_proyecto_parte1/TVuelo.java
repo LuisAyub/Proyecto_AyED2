@@ -9,7 +9,7 @@ import java.util.LinkedList;
  *
  * @author diego
  */
-public class TCamino {
+public class TVuelo {
 
     private final TVertice origen;
     private String aerolinea;
@@ -34,13 +34,13 @@ public class TCamino {
         return sb.toString();
     }
 
-    public TCamino(TVertice v, String aerolinea) {
+    public TVuelo(TVertice v, String aerolinea) {
         this.origen = v;
         this.aerolinea = aerolinea;
         this.otrosVertices = new LinkedList();
     }
 
-    public TCamino(TVertice v) {
+    public TVuelo(TVertice v) {
         this.origen = v;
         this.otrosVertices = new LinkedList();
     }
@@ -81,9 +81,9 @@ public class TCamino {
         this.costoTotal = costoTotal;
     }
 
-    public TCamino copiar() {
+    public TVuelo copiar() {
         TVertice origen = new TVertice(this.getOrigen().getEtiqueta());
-        TCamino copia = new TCamino(origen, this.getAerolinea());
+        TVuelo copia = new TVuelo(origen, this.getAerolinea());
         origen.getAdyacentes().addAll(this.getOrigen().getAdyacentes());
         copia.getOtrosVertices().addAll(this.getOtrosVertices());
 
