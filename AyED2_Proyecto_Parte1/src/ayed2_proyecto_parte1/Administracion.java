@@ -17,19 +17,29 @@ import java.util.Map;
 public class Administracion {
     private Map<Comparable,Aerolinea> aerolineas;
     private Collection<TVertice> aeropuertos;
-    private LinkedList<IArista> vuelos;
     
     public Administracion(){
         aerolineas = new HashMap();
         aeropuertos = new LinkedList();
     }
     
-    public void cargarAerolineas(Comparable etiqueta, String nombre){
-        Aerolinea a = new Aerolinea(etiqueta,nombre);
-        aerolineas.put(etiqueta,a);
+    void cargarDatos(String ruta1, String ruta2, String ruta3) {
+        cargarAerolineas(ruta1);
+        cargarAeropuertos(ruta2);
+        cargarVuelos(ruta3);
+        cargarGrafos();
     }
     
-    public void cargarAeropuertos(String ruta){
+    private void cargarAerolineas(String ruta){
+        String[] datosAerolineas = ManejadorArchivosGenerico.leerArchivo(ruta, false);
+        for (String aero: datosAerolineas){
+            String[] datos = aero.split(",");
+            Aerolinea a = new Aerolinea(datos[0],datos[1]);
+            aerolineas.put(datos[0],a);
+        }
+    }
+    
+    private void cargarAeropuertos(String ruta){
         String[] listaAeropuertos = ManejadorArchivosGenerico.leerArchivo(ruta, false);
         for (String d: listaAeropuertos){
             String[] datos = d.split(",");
@@ -40,7 +50,7 @@ public class Administracion {
         } 
     }
     
-    public void cargarVuelos(String ruta){
+    private void cargarVuelos(String ruta){
         String[] conexiones = ManejadorArchivosGenerico.leerArchivo(ruta, false);
         for (String d: conexiones){
             String[] datos = d.split(",");
@@ -51,7 +61,7 @@ public class Administracion {
         }
     }
     
-    public void cargarGrafos(){
+    private void cargarGrafos(){
         for (Aerolinea a : aerolineas.values()){
             a.setGrafo(aeropuertos, a.getVuelos());
         }

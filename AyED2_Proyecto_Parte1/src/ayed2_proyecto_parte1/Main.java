@@ -16,15 +16,8 @@ public class Main {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        String[] aerolineas = ManejadorArchivosGenerico.leerArchivo("./src/ayed2_proyecto_parte1/Aerolineas.csv", false);
         Administracion alasUcu = new Administracion();
-        for (String a: aerolineas){
-            String[] datos = a.split(",");
-            alasUcu.cargarAerolineas(datos[0], datos[1]);
-        }
-        alasUcu.cargarAeropuertos("./src/ayed2_proyecto_parte1/Aeropuertos.csv");
-        alasUcu.cargarVuelos("./src/ayed2_proyecto_parte1/vuelos_test.csv");
-        alasUcu.cargarGrafos();
+        alasUcu.cargarDatos("./src/ayed2_proyecto_parte1/Aerolineas.csv","./src/ayed2_proyecto_parte1/Aeropuertos.csv","./src/ayed2_proyecto_parte1/vuelos_test.csv");
         alasUcu.obtenerCaminos("JFK", "LAX");
         System.out.println(" ------------------ ");
         alasUcu.obtenerCaminos("MIA", "");
