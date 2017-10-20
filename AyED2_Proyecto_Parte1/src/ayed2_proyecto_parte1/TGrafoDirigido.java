@@ -7,10 +7,19 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.TreeMap;
 
+/**
+ *
+ * @author Luigi PC
+ */
 public class TGrafoDirigido implements IGrafoDirigido {
 
     private Map<Comparable, TVertice> vertices; //lista de vertices del grafo.-
 
+    /**
+     *
+     * @param vertices
+     * @param aristas
+     */
     public TGrafoDirigido(Collection<TVertice> vertices, Collection<TArista> aristas) {
         this.vertices = new HashMap<>();
         for (TVertice vertice : vertices) {
@@ -142,11 +151,18 @@ public class TGrafoDirigido implements IGrafoDirigido {
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     public Object[] getEtiquetasOrdenado() {
         TreeMap<Comparable, TVertice> mapOrdenado = new TreeMap<>(this.getVertices());
         return mapOrdenado.keySet().toArray();
     }
 
+    /**
+     *
+     */
     public void desvisitarVertices() {
         for (TVertice vertice : this.vertices.values()) {
             vertice.setVisitado(false);
@@ -160,11 +176,21 @@ public class TGrafoDirigido implements IGrafoDirigido {
         return vertices;
     }
 
+    /**
+     *
+     * @param vertice
+     * @return
+     */
     @Override
     public Collection<Comparable> bpf(TVertice vertice) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param etiquetaOrigen
+     * @return
+     */
     @Override
 
     public Collection<Comparable> bpf(Comparable etiquetaOrigen) {
@@ -176,6 +202,10 @@ public class TGrafoDirigido implements IGrafoDirigido {
         return listaBpf;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     /**
      * BPF del grafo, a partir del primer vértice, para todos los vertices
@@ -199,7 +229,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
     /**
      * @param etiquetaOrigen
      * @param etiquetaDestino
-     * @param comparadorCaminos
+     * @param aerolinea
      * @return Un array con las claves de los vertices que componen el mejor
      * camino, en caso de que exista
      */
@@ -215,18 +245,30 @@ public class TGrafoDirigido implements IGrafoDirigido {
         return null;
     }
 
-   
-
+    /**
+     *
+     * @param camino
+     * @return
+     */
     @Override
     public boolean tieneCiclo(TVuelo camino) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @param etiquetaOrigen
+     * @return
+     */
     @Override
     public boolean tieneCiclo(Comparable etiquetaOrigen) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean tieneCiclo() {
         boolean flag = false;

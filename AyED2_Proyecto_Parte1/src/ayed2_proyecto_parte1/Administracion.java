@@ -1,29 +1,35 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ayed2_proyecto_parte1;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
 /**
- *
- * @author Luigi PC
+ * Clase que contiene todas las funciones solicitadas.
+ * @author Luis Ayub
  */
 public class Administracion {
     private Map<Comparable,Aerolinea> aerolineas;
     private Collection<TVertice> aeropuertos;
     
+    /**
+     * Constructor de la clase, se encarga de inicializar las variables de 
+     * clase aerolineas y aeropuertos.
+     */
     public Administracion(){
         aerolineas = new HashMap();
         aeropuertos = new LinkedList();
     }
     
-    void cargarDatos(String ruta1, String ruta2, String ruta3) {
+    /**
+     * Metodo que se encarga de cargar los datos de las aerolineas, aeropuertos,
+     * y vuelos a realizar.
+     * @param ruta1 ruta donde se encuentra los datos de las aerolineas.
+     * @param ruta2 ruta donde se encuentra los datos de los aeropuertos.
+     * @param ruta3 ruta donde se encuentra los datos de los vuelos.
+     */
+    
+    public void cargarDatos(String ruta1, String ruta2, String ruta3) {
         cargarAerolineas(ruta1);
         cargarAeropuertos(ruta2);
         cargarVuelos(ruta3);
@@ -43,9 +49,7 @@ public class Administracion {
         String[] listaAeropuertos = ManejadorArchivosGenerico.leerArchivo(ruta, false);
         for (String d: listaAeropuertos){
             String[] datos = d.split(",");
-            Aeropuerto a = new Aeropuerto(datos[0], datos[1]);
             TVertice v = new TVertice(datos[0]);
-            v.setDatos(a);
             aeropuertos.add(v);
         } 
     }
@@ -66,6 +70,13 @@ public class Administracion {
             a.setGrafo(aeropuertos, a.getVuelos());
         }
     }
+    
+    /**
+     * Metodo que se encarga en obtener todos los caminos que van desde el 
+     * origen al destino indicados.
+     * @param origen Etiqueta del primer vertice del camino.
+     * @param destino Etiqueta del vertice final del camino.
+     */
     
     public void obtenerCaminos(Comparable origen, Comparable destino){
         if (!origen.equals("") && !destino.equals("")){

@@ -16,10 +16,17 @@ public class TVuelos {
     
     private Collection<TVuelo> caminos;
 
+    /**
+     *
+     */
     public TVuelos() {
         this.caminos = new LinkedList<>();
     }
     
+    /**
+     *
+     * @return
+     */
     public String imprimirCaminos(){
         StringBuilder sb = new StringBuilder();
         for (TVuelo camino : caminos){
@@ -28,10 +35,17 @@ public class TVuelos {
         return sb.toString();
     }
 
+    /**
+     *
+     */
     public void imprimirCaminosConsola(){
         System.out.println(imprimirCaminos());
     }
 
+    /**
+     *
+     * @return
+     */
     public TVuelo obtenerMenor(){
         TVuelo aux = caminos.iterator().next();
         double min = aux.getCostoTotal();
@@ -47,6 +61,10 @@ public class TVuelos {
         return null;
     }
     
+    /**
+     *
+     * @return
+     */
     public Collection<TVuelo> getCaminos() {
         return caminos;
     }

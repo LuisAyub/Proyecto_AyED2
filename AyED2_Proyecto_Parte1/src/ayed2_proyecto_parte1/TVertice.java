@@ -4,6 +4,10 @@ package ayed2_proyecto_parte1;
 import java.util.Collection;
 import java.util.LinkedList;
 
+/**
+ *
+ * @author Luigi PC
+ */
 public class TVertice implements IVertice{
 
     private Comparable etiqueta;
@@ -11,32 +15,57 @@ public class TVertice implements IVertice{
     private boolean visitado;
     private Object datos;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Comparable getEtiqueta() {
         return etiqueta;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public LinkedList<TAdyacencia> getAdyacentes() {
         return adyacentes;
     }
 
+    /**
+     *
+     * @param unaEtiqueta
+     */
     public TVertice(Comparable unaEtiqueta) {
         this.etiqueta = unaEtiqueta;
         adyacentes = new LinkedList();
         visitado = false;
     }
 
+    /**
+     *
+     * @param valor
+     */
     @Override
     public void setVisitado(boolean valor) {
         this.visitado = valor;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public boolean getVisitado() {
         return this.visitado;
     }
 
+    /**
+     *
+     * @param verticeDestino
+     * @return
+     */
     @Override
     public TAdyacencia buscarAdyacencia(TVertice verticeDestino) {
         if (verticeDestino != null) {
@@ -45,6 +74,11 @@ public class TVertice implements IVertice{
         return null;
     }
 
+    /**
+     *
+     * @param verticeDestino
+     * @return
+     */
     @Override
     public Double obtenerCostoAdyacencia(TVertice verticeDestino) {
         TAdyacencia ady = buscarAdyacencia(verticeDestino);
@@ -54,6 +88,12 @@ public class TVertice implements IVertice{
         return Double.MAX_VALUE;
     }
 
+    /**
+     *
+     * @param costo
+     * @param verticeDestino
+     * @return
+     */
     @Override
     public boolean insertarAdyacencia(Double costo, TVertice verticeDestino) {
         if (buscarAdyacencia(verticeDestino) == null) {
@@ -63,6 +103,11 @@ public class TVertice implements IVertice{
         return false;
     }
 
+    /**
+     *
+     * @param nomVerticeDestino
+     * @return
+     */
     @Override
     public boolean eliminarAdyacencia(Comparable nomVerticeDestino) {
         TAdyacencia ady = buscarAdyacencia(nomVerticeDestino);
@@ -73,6 +118,10 @@ public class TVertice implements IVertice{
         return false;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public TVertice primerAdyacente() {
         if (this.adyacentes.getFirst() != null) {
@@ -81,7 +130,11 @@ public class TVertice implements IVertice{
         return null;
     }
 
-
+    /**
+     *
+     * @param etiquetaDestino
+     * @return
+     */
     @Override
     public TAdyacencia buscarAdyacencia(Comparable etiquetaDestino) {
         for (TAdyacencia adyacencia : adyacentes) {
@@ -92,11 +145,19 @@ public class TVertice implements IVertice{
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Object getDatos() {
         return datos; 
     }
 
+    /**
+     *
+     * @param visitados
+     */
     @Override
     public void bpf(Collection<Comparable> visitados) {
         setVisitado(true);
@@ -109,7 +170,14 @@ public class TVertice implements IVertice{
         }
     }
 
-public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos) {
+    /**
+     *
+     * @param etVertDest
+     * @param caminoPrevio
+     * @param todosLosCaminos
+     * @return
+     */
+    public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos) {
         this.setVisitado(true);
         for (TAdyacencia adyacencia : this.getAdyacentes()) {
             TVertice destino = adyacencia.getDestino();
@@ -129,6 +197,11 @@ public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuel
         return todosLosCaminos;
     }    
 
+    /**
+     *
+     * @param camino
+     * @return
+     */
     @Override
     public boolean tieneCiclo(TVuelo camino) {
         this.visitado = true;
@@ -148,6 +221,10 @@ public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuel
         return flag;
     }
 
+    /**
+     *
+     * @param dato
+     */
     @Override
     public void setDatos(Object dato) {
         this.datos = dato;

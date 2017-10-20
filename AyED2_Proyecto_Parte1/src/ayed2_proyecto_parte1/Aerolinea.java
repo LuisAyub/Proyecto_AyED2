@@ -1,23 +1,25 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ayed2_proyecto_parte1;
-
 import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- *
- * @author Luigi PC
+ * Clase que contiene los datos de una aerolinea.
+ * @author Luis Ayub
  */
+
 class Aerolinea {
     private Collection<TArista> vuelos;
     private IGrafoDirigido grafo;
     private Comparable etiqueta;
     private String nombre;
 
+    /**
+     * Constructor de la clase, se encarga de asignarle valores a la etiqueta y
+     * al nombre, tambien inicializa la variable vuelos.
+     * @param etiqueta Etiqueta del aerolinea.
+     * @param nombre Nombre del aeropuerto.
+     */
+    
     public Aerolinea(Comparable etiqueta, String nombre){
         this.etiqueta = etiqueta;
         this.nombre = nombre;
@@ -25,56 +27,66 @@ class Aerolinea {
     }
 
     /**
-     * @return the etiqueta
+     * Metodo de retorna la etiqueta de la aerolinea.
+     * @return retorna la etiqueta de la aerolinea.
      */
     public Comparable getEtiqueta() {
         return etiqueta;
     }
 
     /**
-     * @param etiqueta the etiqueta to set
+     * Metodo que se encarga de asignar un Cadena de caracteres a la etiqueta.
+     * @param etiqueta Cadena de caracteres a asignar.
      */
     public void setEtiqueta(Comparable etiqueta) {
         this.etiqueta = etiqueta;
     }
 
     /**
-     * @return the nombre
+     * Metodo de retorna la nombre de la aerolinea.
+     * @return retorna la nombre de la aerolinea.
      */
     public String getNombre() {
         return nombre;
     }
 
     /**
-     * @param nombre the nombre to set
+     * Metodo que se encarga de asignar un Cadena de caracteres al nombre.
+     * @param nombre Cadena de caracteres a asignar.
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
     /**
-     * @return the vuelos
+     * Metodo de retorna la coleccion de vuelos (aristas) en la aerolinea.
+     * @return Retorna una collecion de aristas.
      */
     public Collection<TArista> getVuelos() {
         return vuelos;
     }
 
     /**
-     * @param vuelos the vuelos to set
+     * Metodo que se encarga de asignar una colecion a la variable vuelos.
+     * @param vuelos Coleccion a asignar.
      */
     public void setVuelos(Collection<TArista> vuelos) {
         this.vuelos = vuelos;
     }
 
     /**
-     * @return the grafo
+     * Metodo de retorna el grafo dirigido de la aerolinea.
+     * @return Retorna un grafo dirigido.
      */
     public IGrafoDirigido getGrafo() {
         return grafo;
     }
 
     /**
-     * @param grafo the grafo to set
+     * Metodo que se encarga de asignar y crear un grafo dirigido utilizando
+     * los vertices y aristas dadas.
+     * @param vertices Vertices del grafo a crear.
+     * @param aristas Aristas del grafo a crear.
      */
     public void setGrafo(Collection<TVertice> vertices, Collection<TArista> aristas) {
         this.grafo = new TGrafoDirigido(vertices, aristas);
