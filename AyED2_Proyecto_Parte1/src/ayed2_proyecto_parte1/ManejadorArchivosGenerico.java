@@ -10,15 +10,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- *
- * @author Luigi PC
+ * Clase que se encarga de leer o escribir archivos.
+ * @author Luis Ayub
  */
 public class ManejadorArchivosGenerico {
 
     /**
-     * @param nombreCompletoArchivo
-     * @param listaLineasArchivo lista con las lineas del archivo
-     */
+    * Metodo que se encarga de escribir un archivo, dado el nombre del 
+    * archivo y las lineas a escribir.
+    * @param nombreCompletoArchivo Nombre del archivo a escribir.
+    * @param listaLineasArchivo Lista con las lineas del archivo.
+    */
     public static void escribirArchivo(String nombreCompletoArchivo,
             String[] listaLineasArchivo) {
         FileWriter fw;
@@ -38,24 +40,12 @@ public class ManejadorArchivosGenerico {
             e.printStackTrace();
         }
     }
-
-    /**
-     *
-     * @param nombreCompletoArchivo
-     * @param ignoreHeader
-     * @return
-     */
-    public static String[] leerArchivoRutaRelativa(String nombreCompletoArchivo, boolean ignoreHeader) {
-        String path = ManejadorArchivosGenerico.class
-                .getResource(nombreCompletoArchivo).getPath();
-        return leerArchivo(path, ignoreHeader);
-    }
     
     /**
-     *
-     * @param nombreCompletoArchivo
-     * @param ignoreHeader
-     * @return
+     * Metodo que se encargar de leer un archivo, dado el nombre del archivo.
+     * @param nombreCompletoArchivo Ruta del archivo con su nombre.
+     * @param ignoreHeader boolean que indica si ignora la primera linea o no.
+     * @return Retorna un array de Strings con las lineas del archivo.
      */
     public static String[] leerArchivo(String nombreCompletoArchivo, boolean ignoreHeader) {
         FileReader fr;
