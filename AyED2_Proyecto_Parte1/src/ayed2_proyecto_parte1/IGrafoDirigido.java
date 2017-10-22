@@ -3,7 +3,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- *
+ * Interfaz que contiene todos los metodos de un grafo dirigido.
  * @author Luis Ayub
  */
 public interface IGrafoDirigido {
@@ -79,11 +79,12 @@ public interface IGrafoDirigido {
     public Map<Comparable, TVertice> getVertices();
 
     /**
-     *
-     * @param etiquetaOrigen
-     * @param etiquetaDestino
-     * @param aerolinea
-     * @return
+     * Metodo que devuelve todos los vuelos que van desde el vertice de origen 
+     * al vertice destino, incluyendo su aerolinea.
+     * @param etiquetaOrigen Etiqueta del vertice de origen.
+     * @param etiquetaDestino Etiqueta del vertice de destino.
+     * @param aerolinea aerolinea a la cual pertenece.
+     * @return Todos los vuelos que van del vertice origen al vertice camino.
      */
     public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea);
 }

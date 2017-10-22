@@ -1,12 +1,11 @@
 package ayed2_proyecto_parte1;
 
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- *
- * @author Luigi PC
+ * Clase que contiene todos los metodos de un vertice de un grafo.
+ * @author Luis Ayub
  */
 public class TVertice implements IVertice{
 
@@ -16,8 +15,8 @@ public class TVertice implements IVertice{
     private Object datos;
 
     /**
-     *
-     * @return
+     * Metodo de retorna la variable etiqueta.
+     * @return Retorna la etiqueta del vertice.
      */
     @Override
     public Comparable getEtiqueta() {
@@ -25,8 +24,8 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @return
+     * Metodo que devuelve una LinkedList con las adyacencia del vertice.
+     * @return LinkedList con las adyacencia del vertice.
      */
     @Override
     public LinkedList<TAdyacencia> getAdyacentes() {
@@ -34,8 +33,9 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param unaEtiqueta
+     * Metodo contructor de la clase, Se encarga de asignarle una etiqueta al
+     * vertice y de inicializar la lista de adyacencias.
+     * @param unaEtiqueta Etiqueta que tendra el vertice.
      */
     public TVertice(Comparable unaEtiqueta) {
         this.etiqueta = unaEtiqueta;
@@ -44,8 +44,9 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param valor
+     * Metodo que se encarga de asignar un boolean a la variable
+     * visitado.
+     * @param valor boolean a ser asignado.
      */
     @Override
     public void setVisitado(boolean valor) {
@@ -53,8 +54,8 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @return
+     * Metodo de retorna la variable visitado.
+     * @return Retorna si el vertice fue visitado o no.
      */
     @Override
     public boolean getVisitado() {
@@ -62,9 +63,10 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param verticeDestino
-     * @return
+     * Metodo que se encarga de buscar una adyacencia especifica al vertice.
+     * @param verticeDestino Vertice adyaciente que se quiere buscar.
+     * @return Retorna la adyacencia en caso de encontrarla, en caso contrario,
+     * devuelve nulo.
      */
     @Override
     public TAdyacencia buscarAdyacencia(TVertice verticeDestino) {
@@ -75,9 +77,10 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param verticeDestino
-     * @return
+     * Metodo que se encarga de obtener el costo de una adyacencia especifica
+     * utilizando su vertice destino.
+     * @param verticeDestino Vertice destino de la adyacencia.
+     * @return Devuelve el costo de la adyacencia.
      */
     @Override
     public Double obtenerCostoAdyacencia(TVertice verticeDestino) {
@@ -89,10 +92,11 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param costo
-     * @param verticeDestino
-     * @return
+     * Metodo que se encarga de insertar una adyacencia al vertice, recibiendo
+     * el costo y el vertice destino,
+     * @param costo Costo de la adyacencia.
+     * @param verticeDestino Vertice destino de la adyacencia.
+     * @return True si se logro insertar, False en el caso contrario.
      */
     @Override
     public boolean insertarAdyacencia(Double costo, TVertice verticeDestino) {
@@ -104,9 +108,10 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param nomVerticeDestino
-     * @return
+     * Metodo que se encarga de eliminar una adyacencia del vertice especifico.
+     * @param nomVerticeDestino Etiqueta de la adyacencia que se quiere 
+     * eliminar.
+     * @return True si se logro eliminar, false en caso contrario.
      */
     @Override
     public boolean eliminarAdyacencia(Comparable nomVerticeDestino) {
@@ -119,8 +124,8 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @return
+     * Metodo que devuelve el primer adyacente del vertice.
+     * @return Primer adyacente del vertice.
      */
     @Override
     public TVertice primerAdyacente() {
@@ -131,9 +136,12 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param etiquetaDestino
-     * @return
+     * Metodo que se encarga de buscar una adyacencia especifica al vertice
+     * utilizando su etiqueta.
+     * @param etiquetaDestino Etiqueta del vertice adyaciente que se quiere 
+     * buscar.
+     * @return Retorna la adyacencia en caso de encontrarla, en caso contrario,
+     * devuelve nulo.
      */
     @Override
     public TAdyacencia buscarAdyacencia(Comparable etiquetaDestino) {
@@ -146,8 +154,8 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @return
+     * Metodo que devuelve el dato que el vertice contiene.
+     * @return El dato que contiene el vertice.
      */
     @Override
     public Object getDatos() {
@@ -155,12 +163,14 @@ public class TVertice implements IVertice{
     }
 
     /**
-     *
-     * @param etVertDest
-     * @param caminoPrevio
-     * @param todosLosCaminos
-     * @return
+     * Metodo que devuelve todos los vuelos que van desde el vertice de origen 
+     * al vertice destino, llendo vertice por vertice de forma recursiva.
+     * @param etVertDest Etiqueta del vertice destino.
+     * @param caminoPrevio La lista de camino actual.
+     * @param todosLosCaminos La lista de caminos total.
+     * @return Todos los caminos que van desde el origen hasta el destino.
      */
+    @Override
     public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos) {
         this.setVisitado(true);
         for (TAdyacencia adyacencia : this.getAdyacentes()) {
@@ -182,8 +192,8 @@ public class TVertice implements IVertice{
     }    
 
     /**
-     *
-     * @param dato
+     * Metodo que se encarga de asignar un dato a la variable datos.
+     * @param dato Dato a asignar.
      */
     @Override
     public void setDatos(Object dato) {

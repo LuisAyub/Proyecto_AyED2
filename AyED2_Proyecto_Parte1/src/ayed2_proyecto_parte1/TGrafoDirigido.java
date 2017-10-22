@@ -8,15 +8,16 @@ import java.util.Map;
 import java.util.TreeMap;
 
 /**
- *
- * @author Luigi PC
+ * Clase que contiene todos los metodos de un grafo dirigido.
+ * @author Luis Ayub
  */
 public class TGrafoDirigido implements IGrafoDirigido {
 
     private Map<Comparable, TVertice> vertices; //lista de vertices del grafo.-
 
     /**
-     *
+     * Metodo constructor de la clase, encargada de crear el grafo recibiendo 
+     * los vertices y aristas.
      * @param vertices
      * @param aristas
      */
@@ -141,6 +142,16 @@ public class TGrafoDirigido implements IGrafoDirigido {
         return false;
     }
 
+    /**
+     * Metodo encargado de insertar un vertice en el grafo.
+     *
+     * No pueden ingresarse vertices con la misma etiqueta. La etiqueta
+     * especificada como parametro debe ser valida.
+     *
+     * @param vertice Vertice a insertar.
+     * @return True si se pudo insertar el vertice, false en caso contrario
+     */
+    
     @Override
     public boolean insertarVertice(TVertice vertice) {
         Comparable unaEtiqueta = vertice.getEtiqueta();
@@ -152,8 +163,8 @@ public class TGrafoDirigido implements IGrafoDirigido {
     }
 
     /**
-     *
-     * @return
+     * Metodo encargado de devolver las etiquetas en forma de array.
+     * @return Un array ordenado con sus etiquetas.
      */
     public Object[] getEtiquetasOrdenado() {
         TreeMap<Comparable, TVertice> mapOrdenado = new TreeMap<>(this.getVertices());
@@ -161,7 +172,7 @@ public class TGrafoDirigido implements IGrafoDirigido {
     }
 
     /**
-     *
+     * Metodo que se encarga de desvisitar todos los vertices del grafo.
      */
     public void desvisitarVertices() {
         for (TVertice vertice : this.vertices.values()) {
@@ -170,17 +181,19 @@ public class TGrafoDirigido implements IGrafoDirigido {
     }
 
     /**
-     * @return the vertices
+     * Metodo que se encarga de retornar la variable vertices.
+     * @return Retorna los vertices.
      */
     public Map<Comparable, TVertice> getVertices() {
         return vertices;
     }
     /**
-     * @param etiquetaOrigen
-     * @param etiquetaDestino
-     * @param aerolinea
-     * @return Un array con las claves de los vertices que componen el mejor
-     * camino, en caso de que exista
+     * Metodo que devuelve todos los vuelos que van desde el vertice de origen 
+     * al vertice destino, incluyendo su aerolinea.
+     * @param etiquetaOrigen Etiqueta del vertice de origen.
+     * @param etiquetaDestino Etiqueta del vertice de destino.
+     * @param aerolinea aerolinea a la cual pertenece.
+     * @return Todos los vuelos que van del vertice origen al vertice camino.
      */
     @Override
     public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea) {

@@ -28,7 +28,7 @@ public class Aerolinea {
 
     /**
      * Metodo de retorna la variable etiqueta.
-     * @return retorna la etiqueta de la aerolinea.
+     * @return Retorna la etiqueta de la aerolinea.
      */
     public Comparable getEtiqueta() {
         return etiqueta;
