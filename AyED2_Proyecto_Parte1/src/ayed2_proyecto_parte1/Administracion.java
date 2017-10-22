@@ -76,9 +76,11 @@ public class Administracion {
      * origen al destino indicados.
      * @param origen Etiqueta del primer vertice del camino.
      * @param destino Etiqueta del vertice final del camino.
+     * @return Retorna un TVuelos con todos los vuelos desde el origen al 
+     * destino.
      */
     
-    public void obtenerCaminos(Comparable origen, Comparable destino){
+    public TVuelos obtenerCaminos(Comparable origen, Comparable destino){
         if (!origen.equals("") && !destino.equals("")){
             TVuelos caminosTotal = new TVuelos();
             for (Aerolinea a: aerolineas.values()){
@@ -86,7 +88,7 @@ public class Administracion {
                 caminosTotal.getCaminos().addAll(caminos.getCaminos());
             }
             if (caminosTotal.getCaminos().size() > 0){
-                imprimirCaminos(caminosTotal);
+                return caminosTotal;
             }
             else{
                 System.out.println("No hay vuelos disponibles entre " + origen + " y " + destino + ".");
@@ -95,14 +97,21 @@ public class Administracion {
         else{
             System.out.println("Uno de los atributos se encuentra vacio.");
         }
+        return null;
     }
 
-    private void imprimirCaminos(TVuelos caminosTotal) {
-        for (TVuelo c: caminosTotal.getCaminos()){
+    /**
+     * Metodo que se encarga de imprimir los vuelos de una clase TVuelos, y 
+     * tambien imprime el de menor costo.
+     * @param vuelosTotal TVuelos a imprimir.
+     */
+    
+    public void imprimirVuelos(TVuelos vuelosTotal) {
+        for (TVuelo c: vuelosTotal.getCaminos()){
             c.imprimirEtiquetasConsola();
         }
         System.out.println(" ------------------------ ");
         System.out.println("El vuelo de menor costo es: ");
-        caminosTotal.obtenerMenor().imprimirEtiquetasConsola();
+        vuelosTotal.obtenerMenor().imprimirEtiquetasConsola();
     }
 }

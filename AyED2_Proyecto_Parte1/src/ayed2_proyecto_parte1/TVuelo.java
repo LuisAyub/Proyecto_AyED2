@@ -6,29 +6,30 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 /**
- *
- * @author diego
+ * Clase que contiene un camino de un grafo, desde un origen hasta un destino
+ * predeterminado.
+ * @author Luis Ayub
  */
 public class TVuelo {
 
     private final TVertice origen;
     private String aerolinea;
     private Collection<Comparable> otrosVertices;
-// es una lista de etiquetas de los vertices
-// ATENCIÓN: PONER LA CLASE CONCRETA QUE									     	     
-// SEA MÁS APROPIADA
     private double costoTotal = 0.0d;
 
     /**
-     *
+     * Metodo que imprime en consola la lista de etiquetas, llamando al metodo
+     * imprimirEtiqueta().
      */
     public void imprimirEtiquetasConsola() {
         System.out.println(imprimirEtiquetas());
     }
 
     /**
-     *
-     * @return
+     * Metodo que devuelve una cadena de caracteres con las etiquetas que se 
+     * encuentra dentro del camino.
+     * @return Una cadena de caracteres con las etiquetas de los vertices en el
+     * camino.
      */
     public String imprimirEtiquetas() {
         StringBuilder sb = new StringBuilder();
@@ -42,9 +43,10 @@ public class TVuelo {
     }
 
     /**
-     *
-     * @param v
-     * @param aerolinea
+     * Metodo constructor de la clase, el cual asigna un vertice y una aerolinea
+     * a las variables de clase correspondientes.
+     * @param v Vertice de origen.
+     * @param aerolinea aerolinea a la cual pertenece el vuelo.
      */
     public TVuelo(TVertice v, String aerolinea) {
         this.origen = v;
@@ -53,8 +55,9 @@ public class TVuelo {
     }
 
     /**
-     *
-     * @param v
+     * Metodo constructor de la clase, el cual asigna un vertice a las variables
+     * de clase correspondientes.
+     * @param v Vertice de origen.
      */
     public TVuelo(TVertice v) {
         this.origen = v;
@@ -62,9 +65,9 @@ public class TVuelo {
     }
     
     /**
-     *
-     * @param adyacenciaActual
-     * @return
+     * Metodo que se encarga de agregar una adyacencia al camino.
+     * @param adyacenciaActual Adyacencia a agregar.
+     * @return True si se pudo agregar al camino, en caso contrario False.
      */
     public boolean agregarAdyacencia(TAdyacencia adyacenciaActual) {
         if (adyacenciaActual.getDestino() != null) {
@@ -75,9 +78,9 @@ public class TVuelo {
     }
 
     /**
-     *
-     * @param adyacenciaActual
-     * @return
+     * Metodo que se encarga de eliminar una adyacencia al camino.
+     * @param adyacenciaActual Adyacencia a eliminar.
+     * @return True si se pudo eliminar del camino, en caso contrario False.
      */
     public boolean eliminarAdyacencia(TAdyacencia adyacenciaActual) {
         if (getOtrosVertices().contains(adyacenciaActual.getDestino().getEtiqueta())) {
@@ -88,48 +91,49 @@ public class TVuelo {
     }
 
     /**
-     *
-     * @return
+     * Metodo que devuelve la variable origen.
+     * @return Retorna el vertice origen.
      */
     public TVertice getOrigen() {
         return origen;
     }
 
     /**
-     *
-     * @return
+     * Metodo que retorna la coleccion de las etiquetas de los vertices.
+     * @return La coleccion de las etiquetas de los vertices.
      */
     public Collection<Comparable> getOtrosVertices() {
         return otrosVertices;
     }
 
     /**
-     *
-     * @param otrosVertices
+     * Metodo que se encarga de asignar una coleccion de etiquetas de los 
+     * vertices a la variable otrosVertices.
+     * @param otrosVertices Coleccion de etiquetas de los vertices.
      */
     public void setOtrosVertices(Collection<Comparable> otrosVertices) {
         this.otrosVertices = otrosVertices;
     }
 
     /**
-     *
-     * @return
+     * Metodo que retorna el valor de la variable costoTotal.
+     * @return Valor de la variable costoTotal.
      */
     public Double getCostoTotal() {
         return costoTotal;
     }
 
     /**
-     *
-     * @param costoTotal
+     * Metodo que se encarga de asignarle un valor a la variable costoTotal.
+     * @param costoTotal Valor a asignar.
      */
     public void setCostoTotal(Double costoTotal) {
         this.costoTotal = costoTotal;
     }
 
     /**
-     *
-     * @return
+     * Metodo que se encarga de copiar la clase TVuelo.
+     * @return Una copia de la clase TVuelo.
      */
     public TVuelo copiar() {
         TVertice origen = new TVertice(this.getOrigen().getEtiqueta());
@@ -142,9 +146,11 @@ public class TVuelo {
     }
 
     /**
-     *
-     * @param clave
-     * @return
+     * Metodo que se encarga de imprimir la lista de etiquetas de vertices desde
+     * una clave dada por parametro.
+     * @param clave Etiqueta del vertice del cual comenzara a imprimir
+     * @return Una cadena de caracteres con todos los vertices, empezando desde
+     * la etiqueta dada por paramentro.
      */
     public String imprimirDesdeClave(Comparable clave) {
         StringBuilder sb = new StringBuilder();
@@ -166,7 +172,8 @@ public class TVuelo {
     }
 
     /**
-     * @return the aerolinea
+     * Metodo que retorna la variable aerolinea.
+     * @return Cadena de caracteres que contiene la variable aerolinea.
      */
     public String getAerolinea() {
         return aerolinea;

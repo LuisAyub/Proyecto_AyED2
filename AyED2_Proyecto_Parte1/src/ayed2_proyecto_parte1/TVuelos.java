@@ -1,55 +1,51 @@
 package ayed2_proyecto_parte1;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- *
- * @author diego
+ * Clase que contiene todos los vuelos que hay desde un origen hacia un destino.
+ * @author Luis Ayub
  */
 public class TVuelos {
     
-    private Collection<TVuelo> caminos;
+    private Collection<TVuelo> vuelos;
 
     /**
-     *
+     *Metodo constructor que se encarga de inicializar la variable caminos.
      */
     public TVuelos() {
-        this.caminos = new LinkedList<>();
+        this.vuelos = new LinkedList<>();
     }
     
     /**
-     *
-     * @return
+     * Metodo que se encarga de imprimir todos los vuelos que se encuentran en
+     * la variable vuelos.
+     * @return Una cadena de caracteres con todos los vuelos contenidos.
      */
     public String imprimirCaminos(){
         StringBuilder sb = new StringBuilder();
-        for (TVuelo camino : caminos){
+        for (TVuelo camino : vuelos){
             sb.append(camino.imprimirEtiquetas()+"\n");
         }
         return sb.toString();
     }
 
     /**
-     *
+     * Metodo que se encarga de imprimir en consola la cadena de caracteres que
+     * devuelve el metodo imprimirCaminos();
      */
     public void imprimirCaminosConsola(){
         System.out.println(imprimirCaminos());
     }
 
     /**
-     *
-     * @return
+     * Metodo que se encarga de devolver el vuelo de menor costo.
+     * @return El TVuelo de menor costo.
      */
     public TVuelo obtenerMenor(){
-        TVuelo aux = caminos.iterator().next();
+        TVuelo aux = vuelos.iterator().next();
         double min = aux.getCostoTotal();
-        for (TVuelo c: caminos){
+        for (TVuelo c: vuelos){
             if (min > c.getCostoTotal()){
                 min = c.getCostoTotal();
                 aux = c;
@@ -62,11 +58,12 @@ public class TVuelos {
     }
     
     /**
-     *
-     * @return
+     * Metodo que se encarga de devolver la coleccion de vuelos de la variable
+     * vuelos
+     * @return Una coleccion de TVuelo.
      */
     public Collection<TVuelo> getCaminos() {
-        return caminos;
+        return vuelos;
     }
     
 }
