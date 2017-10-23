@@ -9,7 +9,7 @@ import java.util.LinkedList;
 
 public class Aerolinea {
     private Collection<TArista> vuelos;
-    private IGrafoDirigido grafo;
+    private TGrafoDirigido grafo;
     private Comparable etiqueta;
     private String nombre;
 
@@ -78,7 +78,7 @@ public class Aerolinea {
      * Metodo que retorna la variable grafo.
      * @return Retorna un grafo dirigido.
      */
-    public IGrafoDirigido getGrafo() {
+    public TGrafoDirigido getGrafo() {
         return grafo;
     }
 
@@ -91,5 +91,4 @@ public class Aerolinea {
     public void setGrafo(Collection<TVertice> vertices, Collection<TArista> aristas) {
         this.grafo = new TGrafoDirigido(vertices, aristas);
     }
-   
 }

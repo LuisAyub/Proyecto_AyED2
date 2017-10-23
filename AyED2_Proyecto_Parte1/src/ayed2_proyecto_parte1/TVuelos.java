@@ -22,10 +22,17 @@ public class TVuelos {
      * la variable vuelos.
      * @return Una cadena de caracteres con todos los vuelos contenidos.
      */
-    public String imprimirCaminos(){
+    public String imprimirVuelos(){
         StringBuilder sb = new StringBuilder();
-        for (TVuelo camino : vuelos){
-            sb.append(camino.imprimirEtiquetas()+"\n");
+        if (vuelos != null){
+            for (TVuelo camino : vuelos){
+                if (camino != null){
+                    sb.append(camino.imprimirEtiquetas()+"\n");
+                }
+            }
+        }
+        else{
+            return "No hay vuelos disponibles";
         }
         return sb.toString();
     }
@@ -35,7 +42,7 @@ public class TVuelos {
      * devuelve el metodo imprimirCaminos();
      */
     public void imprimirCaminosConsola(){
-        System.out.println(imprimirCaminos());
+        System.out.println(imprimirVuelos());
     }
 
     /**

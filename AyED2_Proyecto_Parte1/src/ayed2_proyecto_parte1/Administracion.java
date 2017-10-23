@@ -101,17 +101,20 @@ public class Administracion {
     }
 
     /**
-     * Metodo que se encarga de imprimir los vuelos de una clase TVuelos, y 
-     * tambien imprime el de menor costo.
+     * Metodo que devuelve los vuelos de una clase TVuelos, y 
+     * tambien devuelve el de menor costo.
      * @param vuelosTotal TVuelos a imprimir.
+     * @return Retorna una cadena de caracteres con los vuelos.
      */
     
-    public void imprimirVuelos(TVuelos vuelosTotal) {
+    public String imprimirVuelos(TVuelos vuelosTotal) {
+        StringBuilder sb = new StringBuilder();
         for (TVuelo c: vuelosTotal.getCaminos()){
-            c.imprimirEtiquetasConsola();
+            sb.append(c.imprimirEtiquetas()+"\n");
         }
-        System.out.println(" ------------------------ ");
-        System.out.println("El vuelo de menor costo es: ");
-        vuelosTotal.obtenerMenor().imprimirEtiquetasConsola();
+        sb.append(" ------------------------ "+"\n");
+        sb.append("El vuelo de menor costo es: "+"\n");
+        sb.append(vuelosTotal.obtenerMenor().imprimirEtiquetas()+"\n");
+        return sb.toString();
     }
 }

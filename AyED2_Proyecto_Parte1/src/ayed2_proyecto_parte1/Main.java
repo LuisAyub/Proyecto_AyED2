@@ -17,7 +17,7 @@ public class Main {
                 "./src/ayed2_proyecto_parte1/Aeropuertos.csv",
                 "./src/ayed2_proyecto_parte1/vuelos_test.csv");
         TVuelos v = alasUcu.obtenerCaminos("LAX", "JFK");
-        alasUcu.imprimirVuelos(v);
+        System.out.println(alasUcu.imprimirVuelos(v));
 //        System.out.println(" ------------------ ");
 //        alasUcu.obtenerCaminos("MIA", "");
 //        System.out.println(" ------------------ ");
