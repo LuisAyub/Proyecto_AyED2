@@ -23,52 +23,68 @@ public class Administracion {
     
     /**
      * Metodo que se encarga de cargar los datos de las aerolineas, aeropuertos,
-     * y vuelos a realizar.
+     * y vuelos a realizar, En el caso de no poder cargar al menos uno de los
+     * datos, retornara False.
      * @param ruta1 ruta donde se encuentra los datos de las aerolineas.
      * @param ruta2 ruta donde se encuentra los datos de los aeropuertos.
      * @param ruta3 ruta donde se encuentra los datos de los vuelos.
+     * @return False si al menos uno de los casos falla al cargar los datos,
+     * en caso contrario, devolvera True.
      */
     
-    public void cargarDatos(String ruta1, String ruta2, String ruta3) {
-        cargarAerolineas(ruta1);
-        cargarAeropuertos(ruta2);
-        cargarVuelos(ruta3);
-        cargarGrafos();
+    public boolean cargarDatos(String ruta1, String ruta2, String ruta3) {
+        return cargarAerolineas(ruta1) && cargarAeropuertos(ruta2) && cargarVuelos(ruta3) && cargarGrafos();
     }
     
-    private void cargarAerolineas(String ruta){
-        String[] datosAerolineas = ManejadorArchivosGenerico.leerArchivo(ruta, false);
-        for (String aero: datosAerolineas){
-            String[] datos = aero.split(",");
-            Aerolinea a = new Aerolinea(datos[0],datos[1]);
-            aerolineas.put(datos[0],a);
-        }
-    }
-    
-    private void cargarAeropuertos(String ruta){
-        String[] listaAeropuertos = ManejadorArchivosGenerico.leerArchivo(ruta, false);
-        for (String d: listaAeropuertos){
-            String[] datos = d.split(",");
-            TVertice v = new TVertice(datos[0]);
-            aeropuertos.add(v);
-        } 
-    }
-    
-    private void cargarVuelos(String ruta){
-        String[] conexiones = ManejadorArchivosGenerico.leerArchivo(ruta, false);
-        for (String d: conexiones){
-            String[] datos = d.split(",");
-            if (aerolineas.containsKey(datos[0])){
-                TArista vuelo = new TArista(datos[1], datos[2], Double.parseDouble(datos[3]));
-                aerolineas.get(datos[0]).getVuelos().add(vuelo);
+    private boolean cargarAerolineas(String ruta){
+        if (!ruta.equals("")){
+            String[] datosAerolineas = ManejadorArchivosGenerico.leerArchivo(ruta, false);
+            for (String aero: datosAerolineas){
+                String[] datos = aero.split(",");
+                Aerolinea a = new Aerolinea(datos[0],datos[1]);
+                aerolineas.put(datos[0],a);
             }
+            return true;
         }
+        return false;
     }
     
-    private void cargarGrafos(){
-        for (Aerolinea a : aerolineas.values()){
-            a.setGrafo(aeropuertos, a.getVuelos());
+    private boolean cargarAeropuertos(String ruta){
+        if (!ruta.equals("")){
+            String[] listaAeropuertos = ManejadorArchivosGenerico.leerArchivo(ruta, false);
+            for (String d: listaAeropuertos){
+                String[] datos = d.split(",");
+                TVertice v = new TVertice(datos[0]);
+                aeropuertos.add(v);
+            } 
+            return true;
         }
+        return false;
+    }
+    
+    private boolean cargarVuelos(String ruta){
+        if (!ruta.equals("")){
+            String[] conexiones = ManejadorArchivosGenerico.leerArchivo(ruta, false);
+            for (String d: conexiones){
+                String[] datos = d.split(",");
+                if (aerolineas.containsKey(datos[0])){
+                    TArista vuelo = new TArista(datos[1], datos[2], Double.parseDouble(datos[3]));
+                    aerolineas.get(datos[0]).getVuelos().add(vuelo);
+                }
+            }
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean cargarGrafos(){
+        if (aerolineas != null){
+            for (Aerolinea a : aerolineas.values()){
+                a.setGrafo(aeropuertos, a.getVuelos());
+            }
+            return true;
+        }
+        return false;
     }
     
     /**
@@ -108,13 +124,16 @@ public class Administracion {
      */
     
     public String imprimirVuelos(TVuelos vuelosTotal) {
-        StringBuilder sb = new StringBuilder();
-        for (TVuelo c: vuelosTotal.getCaminos()){
-            sb.append(c.imprimirEtiquetas()+"\n");
+        if (vuelosTotal != null){
+            StringBuilder sb = new StringBuilder();
+            for (TVuelo c: vuelosTotal.getCaminos()){
+                sb.append(c.imprimirEtiquetas()+"\n");
+            }
+            sb.append(" ------------------------ "+"\n");
+            sb.append("El vuelo de menor costo es: "+"\n");
+            sb.append(vuelosTotal.obtenerMenor().imprimirEtiquetas()+"\n");
+            return sb.toString();
         }
-        sb.append(" ------------------------ "+"\n");
-        sb.append("El vuelo de menor costo es: "+"\n");
-        sb.append(vuelosTotal.obtenerMenor().imprimirEtiquetas()+"\n");
-        return sb.toString();
+        return "";
     }
 }
