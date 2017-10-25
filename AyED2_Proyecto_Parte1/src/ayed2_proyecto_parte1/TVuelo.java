@@ -1,4 +1,4 @@
-package ayed2_proyecto_parte1;
+ package ayed2_proyecto_parte1;
 
 
 import java.util.Collection;
