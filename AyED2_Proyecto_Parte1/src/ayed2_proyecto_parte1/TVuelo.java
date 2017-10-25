@@ -32,6 +32,7 @@ public class TVuelo {
      * camino.
      */
     public String imprimirEtiquetas() {
+        int escalas = getOtrosVertices().size() - 1;
         StringBuilder sb = new StringBuilder();
         sb.append("Aerolinea: " + getAerolinea());
         sb.append(" // " + getOrigen().getEtiqueta());
@@ -39,6 +40,12 @@ public class TVuelo {
             sb.append(" -> " + adyacente);
         }
         sb.append(" // Costo: " + costoTotal);
+        if (escalas > 0){
+            sb.append(" // Escalas: " + escalas); 
+        }
+        else{
+            sb.append(" // Directo"); 
+        }
         return sb.toString();
     }
 
