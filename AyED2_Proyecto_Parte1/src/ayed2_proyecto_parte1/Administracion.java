@@ -138,7 +138,8 @@ public class Administracion {
     }
 
     /**
-     * @return the aeropuertos
+     * Metodo que devuele la variable aeropuertos.
+     * @return HashMap con los aeropuertos.
      */
     public Map<Comparable,TVertice> getAeropuertos() {
         return aeropuertos;
