@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class Administracion {
     private Map<Comparable,Aerolinea> aerolineas;
-    private Collection<TVertice> aeropuertos;
+    private Map<Comparable,TVertice> aeropuertos;
     
     /**
      * Constructor de la clase, se encarga de inicializar las variables de 
@@ -18,7 +18,7 @@ public class Administracion {
      */
     public Administracion(){
         aerolineas = new HashMap();
-        aeropuertos = new LinkedList();
+        aeropuertos = new HashMap();
     }
     
     /**
@@ -55,7 +55,7 @@ public class Administracion {
             for (String d: listaAeropuertos){
                 String[] datos = d.split(",");
                 TVertice v = new TVertice(datos[0]);
-                aeropuertos.add(v);
+                getAeropuertos().put(datos[1],v);
             } 
             return true;
         }
@@ -80,7 +80,7 @@ public class Administracion {
     private boolean cargarGrafos(){
         if (aerolineas != null){
             for (Aerolinea a : aerolineas.values()){
-                a.setGrafo(aeropuertos, a.getVuelos());
+                a.setGrafo(getAeropuertos().values(), a.getVuelos());
             }
             return true;
         }
@@ -101,9 +101,9 @@ public class Administracion {
             TVuelos caminosTotal = new TVuelos();
             for (Aerolinea a: aerolineas.values()){
                 TVuelos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
-                caminosTotal.getCaminos().addAll(caminos.getCaminos());
+                caminosTotal.getVuelos().addAll(caminos.getVuelos());
             }
-            if (caminosTotal.getCaminos().size() > 0){
+            if (caminosTotal.getVuelos().size() > 0){
                 return caminosTotal;
             }
             else{
@@ -126,7 +126,7 @@ public class Administracion {
     public String imprimirVuelos(TVuelos vuelosTotal) {
         if (vuelosTotal != null){
             StringBuilder sb = new StringBuilder();
-            for (TVuelo c: vuelosTotal.getCaminos()){
+            for (TVuelo c: vuelosTotal.getVuelos()){
                 sb.append(c.imprimirEtiquetas()+"\n");
             }
             sb.append(" ------------------------ "+"\n");
@@ -135,5 +135,12 @@ public class Administracion {
             return sb.toString();
         }
         return "";
+    }
+
+    /**
+     * @return the aeropuertos
+     */
+    public Map<Comparable,TVertice> getAeropuertos() {
+        return aeropuertos;
     }
 }

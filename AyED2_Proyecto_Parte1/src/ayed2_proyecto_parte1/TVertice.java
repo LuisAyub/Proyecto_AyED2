@@ -179,7 +179,7 @@ public class TVertice implements IVertice{
                 if (destino.getEtiqueta().compareTo(etVertDest) == 0) {
                     TVuelo copia = caminoPrevio.copiar();
                     copia.agregarAdyacencia(adyacencia);
-                    todosLosCaminos.getCaminos().add(copia);
+                    todosLosCaminos.getVuelos().add(copia);
                 } else {
                     caminoPrevio.agregarAdyacencia(adyacencia);
                     destino.todosLosCaminos(etVertDest, caminoPrevio, todosLosCaminos);

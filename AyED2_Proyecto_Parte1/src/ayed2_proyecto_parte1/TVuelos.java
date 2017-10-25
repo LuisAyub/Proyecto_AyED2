@@ -69,7 +69,7 @@ public class TVuelos {
      * vuelos
      * @return Una coleccion de TVuelo.
      */
-    public Collection<TVuelo> getCaminos() {
+    public Collection<TVuelo> getVuelos() {
         return vuelos;
     }
     
