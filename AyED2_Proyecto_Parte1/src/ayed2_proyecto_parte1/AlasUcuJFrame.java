@@ -7,6 +7,7 @@ package ayed2_proyecto_parte1;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -129,17 +130,22 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_origenComboBoxActionPerformed
 
     private void btnBuscarVuelosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarVuelosActionPerformed
+        DefaultListModel<String> lista = new DefaultListModel();
+        DefaultListModel<String> listaMenor = new DefaultListModel();
         String origen = (String) origenComboBox.getSelectedItem();
         String destino = (String) destinoComboBox.getSelectedItem();
         TVuelos vuelos = alasUcu.obtenerCaminos(alasUcu.getAeropuertos().get(origen).getEtiqueta(), alasUcu.getAeropuertos().get(destino).getEtiqueta());
-        DefaultListModel<String> lista = new DefaultListModel();
-        DefaultListModel<String> listaMenor = new DefaultListModel();
-        for (TVuelo v : vuelos.getVuelos()){
-            lista.addElement(v.imprimirEtiquetas());
+        if (vuelos != null){
+            for (TVuelo v : vuelos.getVuelos()){
+                lista.addElement(v.imprimirEtiquetas());
+            }
+            listVuelosTotales.setModel(lista);
+            listaMenor.addElement(vuelos.obtenerMenor().imprimirEtiquetas());
+            listVueloMenor.setModel(listaMenor);
         }
-        listVuelosTotales.setModel(lista);
-        listaMenor.addElement(vuelos.obtenerMenor().imprimirEtiquetas());
-        listVueloMenor.setModel(listaMenor);
+        else{
+            JOptionPane.showMessageDialog(rootPane, "No hay vuelos disponibles entre " + origen + " y " + destino + ".");
+        }
     }//GEN-LAST:event_btnBuscarVuelosActionPerformed
 
     /**
