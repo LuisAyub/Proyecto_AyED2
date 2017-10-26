@@ -100,7 +100,7 @@ public class Administracion {
         if (!origen.equals("") && !destino.equals("")){
             TVuelos caminosTotal = new TVuelos();
             for (Aerolinea a: aerolineas.values()){
-                TVuelos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre());
+                TVuelos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre(),4);
                 caminosTotal.getVuelos().addAll(caminos.getVuelos());
             }
             if (caminosTotal.getVuelos().size() > 0){

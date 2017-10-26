@@ -187,6 +187,6 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
         alasUcu = new Administracion();
         alasUcu.cargarDatos("./src/ayed2_proyecto_parte1/Aerolineas.csv",
                 "./src/ayed2_proyecto_parte1/Aeropuertos.csv",
-                "./src/ayed2_proyecto_parte1/vuelos_test.csv");
+                "./src/ayed2_proyecto_parte1/vuelos_produccion.csv");
     }
 }

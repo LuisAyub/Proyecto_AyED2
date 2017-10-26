@@ -193,15 +193,16 @@ public class TGrafoDirigido implements IGrafoDirigido {
      * @param etiquetaOrigen Etiqueta del vertice de origen.
      * @param etiquetaDestino Etiqueta del vertice de destino.
      * @param aerolinea aerolinea a la cual pertenece.
+     * @param largoMax valor del largo maximo del camino.
      * @return Todos los vuelos que van del vertice origen al vertice camino.
      */
     @Override
-    public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea) {
+    public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea, int largoMax) {
         TVuelos todosLosCaminos = new TVuelos();
         TVertice v = buscarVertice(etiquetaOrigen);
         if (v != null) {
             TVuelo caminoPrevio = new TVuelo(v,aerolinea);
-            v.todosLosCaminos(etiquetaDestino, caminoPrevio, todosLosCaminos);
+            v.todosLosCaminos(etiquetaDestino, caminoPrevio, todosLosCaminos, largoMax);
             return todosLosCaminos;
         }
         return null;

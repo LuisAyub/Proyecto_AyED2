@@ -168,21 +168,22 @@ public class TVertice implements IVertice{
      * @param etVertDest Etiqueta del vertice destino.
      * @param caminoPrevio La lista de camino actual.
      * @param todosLosCaminos La lista de caminos total.
+     * @param largoMax valor del largo maximo del camino.
      * @return Todos los caminos que van desde el origen hasta el destino.
      */
     @Override
-    public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos) {
+    public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos, int largoMax) {
         this.setVisitado(true);
         for (TAdyacencia adyacencia : this.getAdyacentes()) {
             TVertice destino = adyacencia.getDestino();
-            if (!destino.getVisitado()) {
+            if (!destino.getVisitado() && largoMax > caminoPrevio.getOtrosVertices().size()) {
                 if (destino.getEtiqueta().compareTo(etVertDest) == 0) {
                     TVuelo copia = caminoPrevio.copiar();
                     copia.agregarAdyacencia(adyacencia);
                     todosLosCaminos.getVuelos().add(copia);
                 } else {
                     caminoPrevio.agregarAdyacencia(adyacencia);
-                    destino.todosLosCaminos(etVertDest, caminoPrevio, todosLosCaminos);
+                    destino.todosLosCaminos(etVertDest, caminoPrevio, todosLosCaminos, largoMax);
                     caminoPrevio.eliminarAdyacencia(adyacencia);
                 }
             }

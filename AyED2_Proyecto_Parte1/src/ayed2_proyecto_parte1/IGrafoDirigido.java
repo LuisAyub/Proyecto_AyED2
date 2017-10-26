@@ -84,7 +84,8 @@ public interface IGrafoDirigido {
      * @param etiquetaOrigen Etiqueta del vertice de origen.
      * @param etiquetaDestino Etiqueta del vertice de destino.
      * @param aerolinea aerolinea a la cual pertenece.
+     * @param largoMax valor del largo maximo del camino.
      * @return Todos los vuelos que van del vertice origen al vertice camino.
      */
-    public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea);
+    public TVuelos todosLosCaminos(Comparable etiquetaOrigen, Comparable etiquetaDestino, String aerolinea, int largoMax);
 }

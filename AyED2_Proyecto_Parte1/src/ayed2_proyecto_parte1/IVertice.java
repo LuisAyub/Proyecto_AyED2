@@ -98,8 +98,9 @@ public interface IVertice {
      * @param etVertDest Etiqueta del vertice destino.
      * @param caminoPrevio La lista de camino actual.
      * @param todosLosCaminos La lista de caminos total.
+     * @param largoMax valor del largo maximo del camino.
      * @return Todos los caminos que van desde el origen hasta el destino.
      */
-    public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos);
+    public TVuelos todosLosCaminos(Comparable etVertDest, TVuelo caminoPrevio, TVuelos todosLosCaminos,int largoMax);
 
 }
