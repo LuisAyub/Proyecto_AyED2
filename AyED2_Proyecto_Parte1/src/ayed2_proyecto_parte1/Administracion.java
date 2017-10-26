@@ -92,15 +92,16 @@ public class Administracion {
      * origen al destino indicados.
      * @param origen Etiqueta del primer vertice del camino.
      * @param destino Etiqueta del vertice final del camino.
+     * @param escalas Cantidad de escalas que se quiere realizar.
      * @return Retorna un TVuelos con todos los vuelos desde el origen al 
      * destino.
      */
     
-    public TVuelos obtenerCaminos(Comparable origen, Comparable destino){
+    public TVuelos obtenerCaminos(Comparable origen, Comparable destino, int escalas){
         if (!origen.equals("") && !destino.equals("")){
             TVuelos caminosTotal = new TVuelos();
             for (Aerolinea a: aerolineas.values()){
-                TVuelos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre(),4);
+                TVuelos caminos = a.getGrafo().todosLosCaminos(origen, destino, a.getNombre(),escalas);
                 caminosTotal.getVuelos().addAll(caminos.getVuelos());
             }
             if (caminosTotal.getVuelos().size() > 0){

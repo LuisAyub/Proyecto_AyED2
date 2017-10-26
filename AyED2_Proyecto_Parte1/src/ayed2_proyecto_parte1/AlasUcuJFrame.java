@@ -44,6 +44,8 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        escalasComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("AlasUcu");
@@ -74,6 +76,10 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
 
         jLabel4.setText("Todos los vuelos...");
 
+        jLabel5.setText("Escalas:");
+
+        escalasComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Directo", "1", "2", "3", "4" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -92,13 +98,17 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                    .addComponent(jLabel2))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5)))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3)
-                            .addComponent(destinoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(destinoComboBox, 0, 205, Short.MAX_VALUE)
+                            .addComponent(escalasComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -113,8 +123,11 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
                     .addComponent(destinoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarVuelos))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(escalasComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1)
@@ -135,7 +148,8 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
         DefaultListModel<String> listaMenor = new DefaultListModel();
         String origen = (String) origenComboBox.getSelectedItem();
         String destino = (String) destinoComboBox.getSelectedItem();
-        TVuelos vuelos = alasUcu.obtenerCaminos(alasUcu.getAeropuertos().get(origen).getEtiqueta(), alasUcu.getAeropuertos().get(destino).getEtiqueta());
+        int escalas = escalasComboBox.getSelectedIndex() + 1;
+        TVuelos vuelos = alasUcu.obtenerCaminos(alasUcu.getAeropuertos().get(origen).getEtiqueta(), alasUcu.getAeropuertos().get(destino).getEtiqueta(), escalas);
         if (vuelos != null){
             for (TVuelo v : vuelos.getVuelos()){
                 lista.addElement(v.imprimirEtiquetas());
@@ -166,10 +180,12 @@ public class AlasUcuJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarVuelos;
     private javax.swing.JComboBox<String> destinoComboBox;
+    private javax.swing.JComboBox<String> escalasComboBox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> listVueloMenor;

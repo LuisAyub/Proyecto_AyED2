@@ -56,13 +56,13 @@ public class AdministracionTest {
         System.out.println("obtenerCaminos: Prueba 1 Caso vacio");
         Comparable origen = "";
         Comparable destino = "";
-        TVuelos result1 = instance.obtenerCaminos(origen, destino);
+        TVuelos result1 = instance.obtenerCaminos(origen, destino,5);
         assertNull(result1);
         System.out.println("obtenerCaminos: Prueba 2 Caso 1,8");
         origen = "1";
         destino = "8";
         String expResult2 = cargarDatosTestObtenerCaminos();
-        String result2 = instance.obtenerCaminos(origen, destino).imprimirVuelos();
+        String result2 = instance.obtenerCaminos(origen, destino,5).imprimirVuelos();
         assertEquals(expResult2, result2);
     }
 
@@ -78,12 +78,12 @@ public class AdministracionTest {
         Administracion instance = new Administracion();
         instance.cargarDatos(ruta1, ruta2, ruta3);
         System.out.println("imprimirVuelos: Prueba 1 caso vacio");
-        TVuelos vuelosTotal = instance.obtenerCaminos("", "");
+        TVuelos vuelosTotal = instance.obtenerCaminos("", "", 5);
         String expResult = "";
         String result = instance.imprimirVuelos(vuelosTotal);
         assertEquals(expResult, result);
         System.out.println("imprimirVuelos: Prueba 2 caso general");
-        vuelosTotal = instance.obtenerCaminos("1", "8");
+        vuelosTotal = instance.obtenerCaminos("1", "8", 5);
         expResult = cargarDatosTestImprimirVuelos();
         result = instance.imprimirVuelos(vuelosTotal);
         assertEquals(expResult, result);
