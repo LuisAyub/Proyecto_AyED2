@@ -69,6 +69,6 @@ public class Main {
             }
             salida[i] = temp;
         }
-        ManejadorArchivosGenerico.escribirArchivo("./src/ayed2_proyecto_parte2/salida300.txt", salida);
+        ManejadorArchivosGenerico.escribirArchivo("./src/ayed2_proyecto_parte2/salida30000.txt", salida);
     }
 }

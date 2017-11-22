@@ -14,7 +14,7 @@ class TCronometro {
     public double[] calcularTiempos(int metodo,int[] vector, int rep){
         TClasificador clasificador = new TClasificador();
         int[] copia = null;
-        double[] tiempoFinal = new double[rep];
+        double[] tiempoFinal = new double[rep+1];
 //        imprimirArray(vector);
         for (int i = 0; i <= rep; i++){
             long total = 0;
