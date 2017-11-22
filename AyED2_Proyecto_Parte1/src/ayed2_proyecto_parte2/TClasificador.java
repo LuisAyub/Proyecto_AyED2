@@ -1,5 +1,7 @@
 package ayed2_proyecto_parte2;
 
+import java.util.Random;
+
 public class TClasificador {
 
     public static final int METODO_CLASIFICACION_INSERCION = 1;
@@ -96,56 +98,46 @@ public class TClasificador {
     
 
     protected int[] ordenarPorQuickSort(int[] datosParaClasificar) {
-        quicksort(datosParaClasificar, 0, datosParaClasificar.length - 1);
+        int[] contador = new int[1];
+        quicksort(datosParaClasificar, 0, datosParaClasificar.length - 1,contador);
+//        System.out.println(contador[0]);
         return datosParaClasificar;
     }
 
-    private void quicksort(int[] entrada, int i, int j) {
-        int izquierda = i;
-        int derecha = j;
-
-        int posicionPivote = encuentraPivote(izquierda, derecha, entrada);
-        if (posicionPivote >= 0) {
-            int pivote = entrada[posicionPivote];
-            while (izquierda <= derecha) {
-                while ((entrada[izquierda] < pivote) && (izquierda < j)) {
-                    izquierda++;
+    private void quicksort(int[] entrada, int i, int j, int[] contador) {
+        if (j - i > 0){
+            int izquierda = i;
+            int derecha = j;
+            contador[0]++;
+            int posicionPivote = encuentraPivote(izquierda, derecha, entrada);
+            if (posicionPivote >= 0) {
+                int pivote = entrada[posicionPivote];
+                while (izquierda <= derecha) {
+                    while ((entrada[izquierda] < pivote) && (izquierda < j)) {
+                        izquierda++;
+                    }
+                    while ((pivote < entrada[derecha]) && (derecha > i)) {
+                        derecha--;
+                    }
+                    if (izquierda <= derecha) {
+                        intercambiar(entrada, izquierda, derecha);
+                        izquierda++;
+                        derecha--;
+                    }
                 }
-                while ((pivote < entrada[derecha]) && (derecha > i)) {
-                    derecha--;
+                if (i < derecha) {
+                    quicksort(entrada, i, derecha,contador);
                 }
-                if (izquierda <= derecha) {
-                    intercambiar(entrada, izquierda, derecha);
-                    izquierda++;
-                    derecha--;
+                if (izquierda < j) {
+                    quicksort(entrada, izquierda, j,contador);
                 }
-            }
-            if (i < derecha) {
-                quicksort(entrada, i, derecha);
-            }
-            if (izquierda < j) {
-                quicksort(entrada, izquierda, j);
             }
         }
     }
 
     private int encuentraPivote(int l, int h, int[] vector) {
-        int res = vector[l];
-        for (int i = l; i <= h; i++) {
-            if (res != vector[i]) {
-                res = -1;
-                break;
-            }
-        }
-
-        //Significa que encontró claves diferentes
-        if (res == -1) {
-            if (vector[l] >= vector[h]) {
-                return l;
-            }
-            return h;
-        }
-        return 0;
+        Random r = new Random();
+        return r.nextInt(h-l) + l;
     }
 
     protected int[] ordenarPorSelecion(int[] datosParaClasificar) {
@@ -167,7 +159,7 @@ public class TClasificador {
         for (int i = (vector.length - 1) / 2; i >= 0; i--) { //Armo el heap inicial de n-1 div 2 hasta 0
             armaHeap(vector, i, vector.length - 1);
         }
-        for (int i = vector.length - 1; i > 1; i--) {
+        for (int i = vector.length - 1; i >= 1; i--) {
             intercambiar(vector, 0, i);
             armaHeap(vector, 0, i - 1);
         }
