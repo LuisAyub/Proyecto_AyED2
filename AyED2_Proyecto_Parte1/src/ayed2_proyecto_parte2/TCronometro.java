@@ -15,8 +15,9 @@ class TCronometro {
         TClasificador clasificador = new TClasificador();
         int[] copia = null;
         double[] tiempoFinal = new double[rep+1];
-//        imprimirArray(vector);
         for (int i = 0; i <= rep; i++){
+//            System.out.println("*---------------*");
+//            imprimirArray(vector);
             long total = 0;
             int llamadas = 0;
             long start = System.nanoTime();
@@ -32,7 +33,7 @@ class TCronometro {
     //        System.out.println("Tiempo total: " + total);
     //        System.out.println("Cantidad de llamadas: " + llamadas);
     //        System.out.println("Tiempo medio: " + tiempoMedio);
-    //        imprimirArray(copia);
+//            imprimirArray(copia);
             start = System.nanoTime();
             total = 0;
             llamadas = 0;

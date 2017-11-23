@@ -17,6 +17,7 @@ public class Main {
     public static void main(String[] args) {
         TCronometro crono = new TCronometro();
         GeneradorDatosGenericos gdg = new GeneradorDatosGenericos();
+        gdg.setTAMANIO_MAX(30000);
         int[] vectorAleatorio = gdg.generarDatosAleatorios();
         int[] vectorAscendente = gdg.generarDatosAscendentes();
         int[] vectorDescendente = gdg.generarDatosDescendentes();
@@ -25,7 +26,7 @@ public class Main {
 //            crono.calcularTiempos(3,vectorAleatorio);
 //            System.out.println("--------------------------------");
 //        }
-        double[][] tiempos = new double[15][6];
+        double[][] tiempos = new double[18][6];
         System.out.println("Insercion Directa Aleatorio: ");
         tiempos[0] = crono.calcularTiempos(1,vectorAleatorio,5);
         System.out.println("Insercion Directa Ascendente: ");
@@ -60,15 +61,26 @@ public class Main {
         tiempos[13] = crono.calcularTiempos(5,vectorAscendente,5);
         System.out.println("Heapsort Descendente: ");
         tiempos[14] = crono.calcularTiempos(5,vectorDescendente,5);
+        System.out.println("------------------------------");
+        System.out.println("Arrays Aleatorio: ");
+        tiempos[15] = crono.calcularTiempos(6,vectorAleatorio,5);
+        System.out.println("Arrays Ascendente: ");
+        tiempos[16] = crono.calcularTiempos(6,vectorAscendente,5);
+        System.out.println("Arrays Descendente: ");
+        tiempos[17] = crono.calcularTiempos(6,vectorDescendente,5);
         String[] salida = new String[tiempos.length];
+        String[] titulos = {"Insercion Directa Aleatorio: ","Insercion Directa Ascendente: ","Insercion Directa Descendente: ","Burbuja Aleatorio: ",
+        "Burbuja Ascendente: ","Burbuja Descendente: ","Quicksort Aleatorio: ","Quicksort Ascendente: ","Quicksort Descendente: ",
+        "Selecion Directa Aleatorio: ","Selecion Directa Ascendente: ","Selecion Directa Descendente: ","Heapsort Aleatorio: ",
+        "Heapsort Ascendente: ","Heapsort Descendente: ","Arrays Aleatorio: ","Arrays Ascendente: ","Arrays Descendente: "};
         String temp = "";
         for(int i = 0; i < tiempos.length ; i++){
-            temp = "|";
+            temp = ";";
             for (int j = 0; j < 6 ; j++){
-                temp += tiempos[i][j] + "|";
+                temp += tiempos[i][j] + ";";
             }
-            salida[i] = temp;
+            salida[i] = titulos[i] + temp;
         }
-        ManejadorArchivosGenerico.escribirArchivo("./src/ayed2_proyecto_parte2/salida30000.txt", salida);
+        ManejadorArchivosGenerico.escribirArchivo("./src/ayed2_proyecto_parte2/salida300.csv", salida);
     }
 }

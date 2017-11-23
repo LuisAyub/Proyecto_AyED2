@@ -1,5 +1,6 @@
 package ayed2_proyecto_parte2;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class TClasificador {
@@ -9,6 +10,7 @@ public class TClasificador {
     public static final int METODO_CLASIFICACION_QUICKSORT = 3;
     public static final int METODO_CLASIFICACION_SELECION = 4;
     public static final int METODO_CLASIFICACION_HEAPSORT = 5;
+    public static final int METODO_CLASIFICACION_ARRAYSORT = 6;
     private int[] vectorIncremento;
 
     public int[] clasificar(int[] datosParaClasificar, int metodoClasificacion, boolean cascara) {
@@ -42,6 +44,12 @@ public class TClasificador {
                     return cascara(datosParaClasificar);
                 } else {
                     return ordenarPorHeapSort(datosParaClasificar);
+                }
+            case METODO_CLASIFICACION_ARRAYSORT:
+                if (cascara) {
+                    return cascara(datosParaClasificar);
+                } else {
+                    return ordenarPorArrays(datosParaClasificar);
                 }
         }
         return null;
@@ -136,8 +144,9 @@ public class TClasificador {
     }
 
     private int encuentraPivote(int l, int h, int[] vector) {
-        Random r = new Random();
-        return r.nextInt(h-l) + l;
+//        Random r = new Random();
+//        return r.nextInt(h-l) + l;
+        return (l+h)/2;
     }
 
     protected int[] ordenarPorSelecion(int[] datosParaClasificar) {
@@ -195,5 +204,10 @@ public class TClasificador {
         } else {
             return posicionDer;
         }
+    }
+
+    private int[] ordenarPorArrays(int[] datosParaClasificar) {
+        Arrays.sort(datosParaClasificar);
+        return datosParaClasificar;
     }
 }
